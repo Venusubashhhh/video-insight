@@ -1,0 +1,150 @@
+/* Chatbot.css */
+body{
+    background-color: #EAEBF5;
+  }
+  .chat-container {
+   font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+      position: relative;
+      position: fixed;
+      right: 20px;
+      height: 93vh;
+      width: 300px;
+      /* padding:10px; */
+      margin: 20px 0px;
+      overflow: hidden;
+      border-radius: 10px;
+      /* background-image: url("https://img.freepik.com/free-vector/white-abstract-background-design_361591-897.jpg?t=st=1707299334~exp=1707299934~hmac=0a60dde91368ac2caf246a612cbe11fa04d1d7e89f11decd27d40e92b667f24c"); */
+    /* transform: rotate(90deg); */
+      background-color: white;
+      box-shadow:0 2px 6px 0 rgba(136, 148, 171, 0.2), 0 24px 20px -24px rgba(71, 82, 107, 0.1) ;
+      /* border: 1px solid rgb(100, 99, 99); */
+    }
+    
+    .headerchat{
+      height: 10%;
+      display: flex;
+      width: 100%;
+      border-bottom: 1.5px solid #F3F4F9;
+    }
+  
+    .headerchat div{
+      margin: 10px 0px 0px 15px;
+      width: 100px;
+      height: 35px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* margin-top:5px; */
+      border-radius: 8px;
+      background-color:#3d42df;
+      cursor: pointer;
+    }
+    .headerchat:hover{
+      opacity: 0.5;
+    }
+  
+    .messages {
+      /* background-image: url("https://img.freepik.com/free-vector/geometric-shapes-vector-pastel-background_53876-176702.jpg?t=st=1707309608~exp=1707310208~hmac=eb630e37a40353afc319b00b7fcb1ae6eb7683093cec344e10e1475af580efce"); */
+    
+      margin: 0px 10px;
+      display: flex;
+      flex-direction: column;
+      height: 80%;
+      overflow: auto;
+    }
+    
+    ::-webkit-scrollbar{
+      display: none;
+    }
+  
+  
+    .message {
+      position: relative;
+      margin: 5px;
+      padding: 10px;
+      border-radius: 10px;
+      max-width: 80%;
+    }
+    
+    .user-message {
+      background-color: #3D42DF;
+      text-align: left;
+      color:white;
+      /* color: white; */
+      align-self: flex-end;
+      border-radius: 15px 0px 15px 15px;
+    }
+    
+    .bot-message {
+      background-color: #F3F4F9;
+      text-align: left;
+      
+      /* display: flex; */
+      /* color: white; */
+      border-radius: 0px 15px 15px 15px;
+      align-self: flex-start;
+    }
+    
+    .input-container {
+      /* margin: 10px; */
+      display: flex;
+      margin-top:6px;
+      padding-right: 5px;
+      margin: 6px 5px 0px 5px ;
+      height: 40px;
+      align-items: center;
+      background-color: #F3F4F9;
+      box-shadow: 0 2px 6px 0 rgba(136, 148, 171, 0.2), 0 24px 20px -24px rgba(71, 82, 107, 0.1);
+      border-radius: 7px;
+    }
+  
+    .sendIcon{
+      border: none;
+      background-color: #3D42DF;
+      border-radius: 50%;
+      width: 30px;
+      height:30px;
+      color: white;
+     }
+    
+    input {
+      width: 240px;
+     
+      padding: 5px;
+      outline: none;
+      border: none;
+      background-color:transparent;
+    }
+    
+    button {
+      margin-left: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  
+    .profile{
+      width: 25px;
+      height: 25px;
+      /* background-image: url("https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=1480&https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"); */
+      border-radius: 50%;
+      /* background-color: #d4cdcd; */
+      margin-top: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+  }
+  .profile img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  
+  
+  
+    /* loder */
+  
+  
+    
