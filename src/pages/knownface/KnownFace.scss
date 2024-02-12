@@ -4,32 +4,25 @@
   padding:0px;
   box-sizing: border-box;
 }
-:root{
-  --color-text: #616161;
-  --color-text-btn: #ffffff;
-  --card1-gradient-color1: #f12711;
-  --card1-gradient-color2: #f5af19;
-  --card2-gradient-color1: #7F00FF;
-  --card2-gradient-color2: #E100FF;
-  --card3-gradient-color1: #3f2b96;
-  --card3-gradient-color2: #a8c0ff;
-  --card4-gradient-color1: #11998e;
-  --card4-gradient-color2: #38ef7d;
-}
-.wrapper{
-  font-family: 'Roboto', sans-serif;
 
-  height: 100vh;
+.face-wrapper{
+  
+  font-family: 'Roboto', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 30px;
+  overflow-y: scroll;
+  padding-bottom: 30px;
+}
+body{
+  background-color: #EAEBF5;
 }
 .card-wrap{
   width: 13rem;
   height: 15rem;
-  background: #fff;
+  background: #f2f2f2;
   border-radius: 20px;
   border: 5px solid #fff;
   overflow: hidden;
@@ -45,15 +38,16 @@
 .card-header{
   height: 12rem;
   width: 100%;
-  background: red;
   border-radius:100% 0% 100% 0% / 0% 50% 50% 100%;
   display: grid;
   place-items: center;
 
 }
-.top-bar{
-    
+.card-header img{
+height: 12rem;
+width: 100%;
 }
+
 .card-header i{
   color: #fff;
 
@@ -68,9 +62,11 @@
 .card-title{
   text-align: center;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 20px;
   margin-top: 10px;
   margin-bottom: 20px;
+  color:black;
+  font-weight: bolder;
   
 }
 
@@ -78,10 +74,58 @@
   background: linear-gradient(to bottom left, var(--card2-gradient-color1), var(--card2-gradient-color2));
 }
 .topbar{
-    margin: 20px auto;
+
     position: relative;
+  padding: 20px;
 }
-h1{
+.h1{
     text-align: center;
-    font-size: 24px;
+    font-size: 36px;
+    font-weight: bolder;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: #182842;
+  width: 60px;
+  padding: 10px 0;
+
+}
+
+.navbar .logo {
+  width: 30px;
+  display: block;
+  margin: auto;
+  cursor: pointer;
+}
+
+.navbar ul {
+  margin-top: 50px;
+
+}
+
+.navbar ul li {
+  list-style: none;
+
+}
+
+.navbar ul li img {
+  width: 50px;
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  cursor: pointer;
+  opacity: 0.5;
+  border-radius: 10px;
+  /* background-color: #3d42df; */
+  transition: opacity 0.5s, background 0.5s;
+}
+
+.navbar ul li img:hover {
+  opacity: 1;
+  background: #4d6181;
+
 }

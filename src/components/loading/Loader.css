@@ -7,10 +7,11 @@
   
   .bouncing-loaderChild {
     width: 60px;
-    height: 15px;
+    height: 10px;
     justify-content: center;
     align-items: center;
     display: flex;
+    margin-top: 5px;
     justify-content: center;
   }
   

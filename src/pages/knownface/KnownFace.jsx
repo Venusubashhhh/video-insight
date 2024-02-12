@@ -1,64 +1,224 @@
 import React from 'react'
 import './KnownFace.scss'
-
+import VideoUploadModal from '../../components/videouploadmodal/VideoUploadModal';
 import { useState } from 'react';
 import ModalComponent from '../../components/photouploadmodal/PhotoModalComponent';
 function Knownface() {
     
   return (
-    <div>
-        <div className='topbar'>
-<h1>KnownFaces</h1>
+    <div className='knownface'>
+      
+      <div className="navbar">
+  <nav>
+  <img src="https://i.postimg.cc/Sx0ZGtQJ/logo.png" className="logo" />
+  <ul>
+    <li>
+     <VideoUploadModal/>
+    </li>
+    <li>
+    <img src='../../../public/assets/white-home-icon-png-9.jpg'></img>
+    </li>
+    <li>
+      <img src="https://i.postimg.cc/v84Fqkyz/setting.png" />
+    </li>
+    
+  </ul>
+</nav>
 
-<div style={{position:'absolute',top:'0px',right:'30px'}} >
+  </div>
+        <div className='topbar'>
+<h1 className='h1'>KnownFaces</h1>
+
+<div style={{position:'absolute',top:'20px',right:'30px'}} >
 <ModalComponent/>
 </div>
         </div>
-    <div className='wrapper'>
+    <div className='face-wrapper'>
 
-<div class="card-wrap">
-  <div class="card-header two">
-    <i class="fab fa-css3-alt"></i>
+    <div class="card-wrap">
+  <div class="card-header four">
+  <img src='../../../public/assets/K2.jpeg'></img>
   </div>
   <div class="card-content">
-    <h1 class="card-title">Title</h1>
-   
+    <h1 class="card-title">Kannan</h1>
+
  </div>
-</div>
-<div class="card-wrap">
-  <div class="card-header two">
-    <i class="fab fa-css3-alt"></i>
+</div><div class="card-wrap">
+  <div class="card-header four">
+  <img src='../../../public/assets/K2.jpeg'></img>
   </div>
   <div class="card-content">
-    <h1 class="card-title">Title</h1>
-   
- </div>
-</div>
-<div class="card-wrap">
-  <div class="card-header two">
-    <i class="fab fa-css3-alt"></i>
-  </div>
-  <div class="card-content">
-    <h1 class="card-title">Title</h1>
-   
+    <h1 class="card-title">Kannan</h1>
+
  </div>
 </div>
 <div class="card-wrap">
   <div class="card-header four">
-    <i class="fab fa-js-square"></i>
+  <img src='../../../public/assets/K2.jpeg'></img>
   </div>
   <div class="card-content">
-    <h1 class="card-title">Title</h1>
+    <h1 class="card-title">Kannan</h1>
+
+ </div>
+</div><div class="card-wrap">
+  <div class="card-header four">
+  <img src='../../../public/assets/K2.jpeg'></img>
+  </div>
+  <div class="card-content">
+    <h1 class="card-title">Kannan</h1>
+
+ </div>
+</div><div class="card-wrap">
+  <div class="card-header four">
+  <img src='../../../public/assets/K2.jpeg'></img>
+  </div>
+  <div class="card-content">
+    <h1 class="card-title">Kannan</h1>
+
+ </div>
+</div><div class="card-wrap">
+  <div class="card-header four">
+  <img src='../../../public/assets/K2.jpeg'></img>
+  </div>
+  <div class="card-content">
+    <h1 class="card-title">Kannan</h1>
+
+ </div>
+</div><div class="card-wrap">
+  <div class="card-header four">
+  <img src='../../../public/assets/K2.jpeg'></img>
+  </div>
+  <div class="card-content">
+    <h1 class="card-title">Kannan</h1>
+
+ </div>
+</div><div class="card-wrap">
+  <div class="card-header four">
+  <img src='../../../public/assets/K2.jpeg'></img>
+  </div>
+  <div class="card-content">
+    <h1 class="card-title">Kannan</h1>
+
+ </div>
+</div><div class="card-wrap">
+  <div class="card-header four">
+  <img src='../../../public/assets/K2.jpeg'></img>
+  </div>
+  <div class="card-content">
+    <h1 class="card-title">Kannan</h1>
+
+ </div>
+</div><div class="card-wrap">
+  <div class="card-header four">
+  <img src='../../../public/assets/K2.jpeg'></img>
+  </div>
+  <div class="card-content">
+    <h1 class="card-title">Kannan</h1>
+
+ </div>
+</div><div class="card-wrap">
+  <div class="card-header four">
+  <img src='../../../public/assets/K2.jpeg'></img>
+  </div>
+  <div class="card-content">
+    <h1 class="card-title">Kannan</h1>
+
+ </div>
+</div><div class="card-wrap">
+  <div class="card-header four">
+  <img src='../../../public/assets/K2.jpeg'></img>
+  </div>
+  <div class="card-content">
+    <h1 class="card-title">Kannan</h1>
+
+ </div>
+</div><div class="card-wrap">
+  <div class="card-header four">
+  <img src='../../../public/assets/K2.jpeg'></img>
+  </div>
+  <div class="card-content">
+    <h1 class="card-title">Kannan</h1>
+
+ </div>
+</div><div class="card-wrap">
+  <div class="card-header four">
+  <img src='../../../public/assets/K2.jpeg'></img>
+  </div>
+  <div class="card-content">
+    <h1 class="card-title">Kannan</h1>
 
  </div>
 </div>
-
 <div class="card-wrap">
   <div class="card-header four">
-    <i class="fab fa-js-square"></i>
+  <img src='../../../public/assets/K2.jpeg'></img>
   </div>
   <div class="card-content">
-    <h1 class="card-title">Title</h1>
+    <h1 class="card-title">Kannan</h1>
+
+ </div>
+</div><div class="card-wrap">
+  <div class="card-header four">
+  <img src='../../../public/assets/K2.jpeg'></img>
+  </div>
+  <div class="card-content">
+    <h1 class="card-title">Kannan</h1>
+
+ </div>
+</div><div class="card-wrap">
+  <div class="card-header four">
+  <img src='../../../public/assets/K2.jpeg'></img>
+  </div>
+  <div class="card-content">
+    <h1 class="card-title">Kannan</h1>
+
+ </div>
+</div><div class="card-wrap">
+  <div class="card-header four">
+  <img src='../../../public/assets/K2.jpeg'></img>
+  </div>
+  <div class="card-content">
+    <h1 class="card-title">Kannan</h1>
+
+ </div>
+</div><div class="card-wrap">
+  <div class="card-header four">
+  <img src='../../../public/assets/K2.jpeg'></img>
+  </div>
+  <div class="card-content">
+    <h1 class="card-title">Kannan</h1>
+
+ </div>
+</div><div class="card-wrap">
+  <div class="card-header four">
+  <img src='../../../public/assets/K2.jpeg'></img>
+  </div>
+  <div class="card-content">
+    <h1 class="card-title">Kannan</h1>
+
+ </div>
+</div><div class="card-wrap">
+  <div class="card-header four">
+  <img src='../../../public/assets/K2.jpeg'></img>
+  </div>
+  <div class="card-content">
+    <h1 class="card-title">Kannan</h1>
+
+ </div>
+</div><div class="card-wrap">
+  <div class="card-header four">
+  <img src='../../../public/assets/K2.jpeg'></img>
+  </div>
+  <div class="card-content">
+    <h1 class="card-title">Kannan</h1>
+
+ </div>
+</div><div class="card-wrap">
+  <div class="card-header four">
+  <img src='../../../public/assets/K2.jpeg'></img>
+  </div>
+  <div class="card-content">
+    <h1 class="card-title">Kannan</h1>
 
  </div>
 </div>

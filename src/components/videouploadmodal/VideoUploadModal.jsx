@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Checkbox, Input, Link} from "@nextui-org/react";
 import './VideoUploadModal.scss'
 import { useState } from "react";
 import AddVideo from "../../services/addvideo/addVideo";
+import { useRecoilState } from "recoil";
+import { Filename } from "../../atom/FilenameAtom";
 export default function VideoUploadModal() {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [selectedFile, setSelectedFile] = useState();
+  const [file, setfile] = useRecoilState(Filename);
+  useEffect(()=>{
+    console.log(file)
+  },[file])
   const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    setSelectedFile(file);
+    const filename = event.target.files[0];
+setfile(event.target.files[0].name);
+    setSelectedFile(filename);
   };
   const formData=new FormData()
 function submit()

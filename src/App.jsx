@@ -4,22 +4,22 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import HomePage from './pages/home/HomePage'
 import Knownface from './pages/knownface/KnownFace'
-import RecoilContextProvider from './atom/RecoilContextProvider'
-import Test from './pages/Test'
+
 import Loader from './components/loading/Loader'
-
-
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Test from './Test'
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-    <RecoilContextProvider>
-  <HomePage/>
-{/* <Knownface/> */}
-{/* <Test/> */}
-  </RecoilContextProvider>
-    </>
+<>
+
+<BrowserRouter>
+<Routes>
+<Route path='/' element={<HomePage/>}> </Route>
+<Route path='/knownface' element ={<Knownface/>}></Route>
+</Routes>
+</BrowserRouter>
+
+</>
   )
 }
 

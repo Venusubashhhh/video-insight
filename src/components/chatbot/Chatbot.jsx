@@ -1,11 +1,11 @@
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import './ChatBot.css'
 import { chatMessagesState } from "../../atom/ChatBotAtom";
 import { useRecoilState } from "recoil";
 import { v4 as uuidv4 } from "uuid";
 import Loader from "../loading/Loader";
 
-const Chatbot = () => {
+const Chatbot = ({displayChat,slideOut}) => {
   const [userInput, setUserInput] = useState("");
   const [chatMessages, setChatMessages] = useRecoilState(chatMessagesState);
   const [botMessageTimeout, setBotMessageTimeout] = useState(null);
@@ -89,12 +89,11 @@ const Chatbot = () => {
 
   const sendMessage = (event) => {
     setShowVoiceIcon(false);
-    setShowLoader(true)
     if (event.type === "submit" || (event.key === "Enter" && !event.shiftKey)) {
       console.log("MSG : ", userInput);
       event.preventDefault();
       if (userInput.trim() === "") return;
-
+      setShowLoader(true)
       const newUserMessage = {
         id: uuidv4(),
         text: userInput,
@@ -123,24 +122,29 @@ const Chatbot = () => {
   };
 
   const renderMessages = () => {
-    return chatMessages.map((message, index) => (
+    return chatMessages.map((message) => (
       <div
         key={message.id}
         id={message.id}
         style={{
           display: "flex",
           alignSelf: message.sender === "user" ? "flex-end" : "flex-start",
+          animation:message.sender !== "bot" && "slideInRight",animationDuration:"0.5s"
         }}
       >
         {message.sender !== "user" && (
-          <div className="profile">
+          <div className="profile"
+          // style={{animation:message.sender === "bot" && "slideInLeft",animationDuration:"0.5s"}}
+          >
             <img
               alt=""
               src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             />
           </div>
         )}
-        <div className={`message ${message.sender}-message`}>
+        <div className={`message ${message.sender}-message`}
+          //  style={{animation:message.sender === "bot" && "slideInLeft",animationDuration:"0.5s"}}
+          >
           <div style={{ marginRight: "15px" }}>
             { message.text}
             </div>
@@ -150,7 +154,7 @@ const Chatbot = () => {
               cursor: "pointer",
               position: "absolute",
               right: "5px",
-              bottom: "7px",
+              bottom: "9.5px",
             }}
             onClick={() => handleVoiceClick(message.id)}
           >
@@ -199,7 +203,7 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="chat-container">
+    <div className={`chat-container ${displayChat && 'chat-container-slidein' } ${slideOut &&'chat-container-slideOut'}`}>
       {/* <div style={{position:"absolute"}}><img  style={{width:"300px",height:"90vh"}}    alt="" src="https://img.freepik.com/free-vector/white-abstract-background-design_361591-897.jpg?w=826&t=st=1707299343~exp=1707299943~hmac=e8e3c0e0022fb01146c60c98e32f2da18a13a3793651214a7e2933f4a6f8f089"></img></div> */}
       <div className="headerchat">
         <div>
@@ -218,7 +222,8 @@ const Chatbot = () => {
       </div>
       <div className="messages" ref={markdownRef}>
         {renderMessages()}
-         {showLoader ? (<div style={{display:"flex"}}>
+         {showLoader ? (<div style={{display:"flex",
+             animation:"slideInLeft",animationDuration:"0.5s"}}>
           <div className="profile">
             <img
               alt=""
@@ -229,10 +234,11 @@ const Chatbot = () => {
       </div>
       <div>
         <div className="input-container">
-          <form onSubmit={sendMessage}>
+          <form onSubmit={sendMessage} className="input-form">
             <input
               type="text"
               value={userInput}
+              style={{width:"88%"}}
               onChange={(e) => setUserInput(e.target.value)}
               placeholder="Type your message..."
             />
@@ -241,6 +247,7 @@ const Chatbot = () => {
                 type="submit"
                 onClick={toggleListening}
                 className="sendIcon"
+                style={{backgroundColor:" #3D42DF"}}
               >
                 <svg
                   viewBox="0 0 22 22"
@@ -251,7 +258,7 @@ const Chatbot = () => {
                   version="1.1"
                   x="0px"
                   y="0px"
-                  style={{ marginLeft: "-4px" }}
+                  style={{ marginLeft: "6px"}}
                 >
                   <path
                     fill="currentColor"
@@ -260,7 +267,7 @@ const Chatbot = () => {
                 </svg>
               </button>
             ) : (
-              <button type="submit" className="sendIcon">
+              <button type="submit" className="sendIcon" style={{backgroundColor:" #3D42DF"}}>
                 <svg
                   viewBox="0 0 24 24"
                   height="14"
@@ -270,7 +277,7 @@ const Chatbot = () => {
                   version="1.1"
                   x="0px"
                   y="0px"
-                  style={{ marginTop: "3px" }}
+                  style={{ marginTop: "1px",marginLeft:"9px" }}
                 >
                   <title>send</title>
                   <path
