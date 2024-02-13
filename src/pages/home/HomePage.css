@@ -313,29 +313,44 @@ a {
 }
 .recommend{
   position: absolute;
-  height: 150px;
+  height: 87px;
   width: 150px;
+  border-radius: 10%;
+  overflow: hidden;
+  border: solid #E5E5E5 2px;
 }
 .one{
   top: 5%;
+  left: 12%;
+  border: 5px;
+  border: solid #E5E5E5 2px;
 }
 .two{
-  top:22%
+  top:22%;
+  left: 12%;
+  border: 5px;
+  border: solid #E5E5E5 2px;
 }
 .three{
-  top:40%
+  top:40%;
+  left: 12%;
+  border: 5px;
+  border: solid #E5E5E5 2px;
 }
 .four{
-  right: 27.5%;
+  left: 55%;
   top: 5%;
+  border: solid #E5E5E5 2px;
 }
 .five{
   right: 27.5%;
   top: 22%;
+  border: solid #E5E5E5 2px;
 }
 .six{
   right: 27.5%;
   top: 40%;
+  border: solid #E5E5E5 2px;
 }
 .dark .sun {
   opacity: 0;

@@ -1,5 +1,6 @@
 
 import "./HomePage.css";
+
 import VideoUploadModal from "../../components/videouploadmodal/VideoUploadModal";
 // import { useRecoilState } from "recoil";
 import { useState, useEffect, useRef } from "react";
@@ -10,15 +11,17 @@ import { Filename } from "../../atom/FilenameAtom";
 import { useRecoilState } from "recoil";
 import VideoPlay from "../../services/playvideo/playvideo";
 import GetVideos from "../../services/getvideos/getvideos";
-
+import { comment } from "../../atom/CommentAtom";
 function HomePage() {
   const ws = useRef(null);
+  const containerRef = useRef(null);
   const [frames, setFrames] = useState([]);
   const [showChatbot, setShowChatbot] = useState(false);
   const [displayChat, setDisplayChat] = useState(false);
   const [slideOut, setSlideOut] = useState(false);
   const [file, setfile] = useRecoilState(Filename);
   const [isDark,setIsDark]=useState(false);
+  const [commentHistory, setcommentHistory] = useRecoilState(comment);
   const [flag,setflag]=useState(true)
   const[recommend,setRecommend]=useState([])
 useEffect(()=>{
@@ -31,13 +34,11 @@ async function setRec()
   console.log('hh')
   console.log(val,'vvvv')
 }
-useEffect(()=>{
-  console.log(recommend)
-},[recommend])
+
   // const { commentHistory, setcommentHistory } = useRecoilState(comment);
   const navigate=useNavigate();
   const messages = [
-    "Hi, welcome to SimpleChat! Go ahead and send me a message. 😄",
+    "Hi, welcome to SimpleChat! Go ahead and send me a message.😄",
     "Another message here.",
     "Yet another message!",
     "And one more message for good measure.",
@@ -60,17 +61,13 @@ useEffect(()=>{
         setShowChatbot(false);
       }
     };
-
     // Add event listener for window resize
     window.addEventListener("resize", handleResize);
-
     // Initial check for window width
     handleResize();
-
     // Clean up function to remove event listener
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
   // useEffect(() => {
   //   // Define the WebSocket URL
   //   const url = "ws://localhost:8765";
@@ -118,26 +115,42 @@ useEffect(()=>{
   //   }
   //   console.log('end')
   // };
-
   function socket_init(){
     const ws = new WebSocket("ws://192.168.1.124:8000/ws");
     return ws
   }
   const [socket, setSocket] = useState()
-  const [value, setValue] = useState("")
+  const [value, setValue] = useState({})
   useEffect(()=>{
     setSocket(socket_init())
   },[])
 if(socket)
   socket.onmessage = function (event) {
     console.log(event.data)
-    setValue(event.data)
+    const val=JSON.parse(event.data);
+    setValue(val)
+    console.log(val.status)
+    if(val?.frameNumber)
+    setcommentHistory((prev) => [...prev,val.frameNumber])
+    console.log(commentHistory,'comment')
+ handleScrollToBottom()
   };
+  useEffect(()=>{
+    console.log(value.image,'hi')
+  },[value])
   function sendMessage(event) {
     if(socket)
     socket?.send(document.getElementById("input").value);
   }
-
+  const handleScrollToBottom = () => {
+    const dashboardContainer = document.querySelector(".msger-chat");
+    if (dashboardContainer) {
+      dashboardContainer.scrollTop = dashboardContainer.scrollHeight;
+    }
+  };
+  const startLive=( )=> {
+   
+  }
   return (
     <div className={`wrapper  ${isDark ? "dark" : "light"}`}>
       <div className="app-container"> 
@@ -154,13 +167,19 @@ if(socket)
               <li>
                 <img src="https://i.postimg.cc/k4DZH604/users.png" onClick={()=>navigate('/knownface')}/>
               </li>
+
+              
               <li onClick={()=>setIsDark(!isDark)}>
                 <img src="https://i.postimg.cc/v84Fqkyz/setting.png" />
+              </li>
+              <li onClick={()=>VideoPlay.live()}>
+                <img src="https://i.postimg.cc/JnggC78Q/video.png" />
               </li>
               <li>
                 <img
                   src="../../../public/assets/media-playback-start-symbolic.svg"
                 onClick={()=>{
+                  setcommentHistory([])
              VideoPlay.play(file)
                 }}
                 />
@@ -170,7 +189,7 @@ if(socket)
         </div>
         <div className="app-main" onClick={handleDisplayChat}>
         <div className="video-wrapper">
-    {<img src={`data:image/jpeg;base64,${value}`} alt="test"></img>}      
+    {<img src={`data:image/jpeg;base64,${value?.image}`} alt="test"></img>}      
     </div>
     {/* <div className='play-button-wrap'>
     {value!=''?<img src='../../../public/assets/118620_play_icon.png'></img>:null}
@@ -181,33 +200,39 @@ if(socket)
     {recommend[0]?<div className="recommend one">
     <img src={`data:image/jpeg;base64,${recommend[0]?.first_frame}`} key={recommend[0]?.name} alt="test" onClick={()=>{VideoPlay.play(recommend[0]?.name)
     setflag(false)
+    setcommentHistory([])
     }}></img>
     </div>:null}
     {recommend[2]?<div className="recommend two">
     <img src={`data:image/jpeg;base64,${recommend[2]?.first_frame}`} key={recommend[2]?.name} alt="test"  onClick={()=>{VideoPlay.play(recommend[2]?.name)
         setflag(false)
+        setcommentHistory([])
     }}></img>
     </div>:null}
     {recommend[4]?<div className="recommend three">
 <img src={`data:image/jpeg;base64,${recommend[4]?.first_frame}`} key={recommend[4]?.name} alt="test"  onClick={()=>{VideoPlay.play(recommend[4]?.name)
 setflag(false)
+setcommentHistory([])
 }}></img>
 </div>:null}
 
 {recommend[1]?<div className="recommend four">
 <img src={`data:image/jpeg;base64,${recommend[1]?.first_frame}`} key={recommend[1]?.name} alt="test"  onClick={()=>{VideoPlay.play(recommend[1]?.name)
 setflag(false)
+setcommentHistory([])
 }}></img>
 </div>:null}
 {recommend[3]?<div className="recommend five">
 <img src={`data:image/jpeg;base64,${recommend[3]?.first_frame}`} key={recommend[3]?.name} alt="test"  onClick={()=>{VideoPlay.play(recommend[3]?.name)
 setflag(false);
+setcommentHistory([])
 }}></img>
 </div>:null}
 {recommend[5]?
 <div className="recommend six">
 <img src={`data:image/jpeg;base64,${recommend[5]?.first_frame}`} key={recommend[5]?.name} alt="test"  onClick={()=>{VideoPlay.play(recommend[5]?.name)
 setflag(false)
+setcommentHistory([])
 }}></img>
 </div>:null}
 </div>
@@ -221,8 +246,9 @@ setflag(false)
                 </p>
               </div>
               <main className="msger-chat">
-                {messages.map((message, index) => (
-                  <div className="msg left-msg" key={index}>
+                {commentHistory.map((message, index) =>{ 
+                  return(
+                  <div className="msg left-msg" key={index}      ref={containerRef}>
                     <div className="msg-bubble">
                       <div className="logo-container">
                         <img
@@ -233,7 +259,7 @@ setflag(false)
                       <div className="msg-text">{message}</div>
                     </div>
                   </div>
-                ))}
+                )})}
               </main>
             </section>
           </div>

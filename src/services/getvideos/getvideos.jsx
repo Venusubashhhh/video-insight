@@ -5,6 +5,7 @@ class getvideo {
     console.log('hello')
     try {
       const response = await  fetch(`http://192.168.1.124:8000/videos`)
+      console.log(response);
       return response.json();
  
     } catch (e) {

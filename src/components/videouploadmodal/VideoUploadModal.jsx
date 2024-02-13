@@ -22,10 +22,10 @@ function submit()
 {
 formData.append('file',selectedFile)
 AddVideo.Add(formData);
-}
+} 
   return (
     <>
-    <img src="https://i.postimg.cc/JnggC78Q/video.png" onClick={onOpen}/>
+    <img src="../../../public/assets/upload icon.png" onClick={onOpen}/>
       <Modal 
         isOpen={isOpen} 
         onOpenChange={onOpenChange}

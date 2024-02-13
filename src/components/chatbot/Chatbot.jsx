@@ -4,11 +4,12 @@ import { chatMessagesState } from "../../atom/ChatBotAtom";
 import { useRecoilState } from "recoil";
 import { v4 as uuidv4 } from "uuid";
 import Loader from "../loading/Loader";
+import DisplayChat from "../../services/addchat/chatService";
 
 const Chatbot = ({displayChat,slideOut}) => {
   const [userInput, setUserInput] = useState("");
   const [chatMessages, setChatMessages] = useRecoilState(chatMessagesState);
-  const [botMessageTimeout, setBotMessageTimeout] = useState(null);
+  // const [botMessageTimeout, setBotMessageTimeout] = useState(null);
   const [showVoiceIcon, setShowVoiceIcon] = useState(false); // Toggle state for voice feature
   const markdownRef = useRef(null);
   const [onVoiceIcon, setOnvoiceIcon] = useState("");
@@ -68,8 +69,8 @@ const Chatbot = ({displayChat,slideOut}) => {
 
   useEffect(() => {
     handleScrollToBottom();
-    const uniqueId = uuidv4();
-    console.log("New ID:", uniqueId);
+    // const uniqueId = uuidv4();
+    // console.log("New ID:", uniqueId);
   }, [chatMessages]);
 
   useEffect(() => {
@@ -87,10 +88,10 @@ const Chatbot = ({displayChat,slideOut}) => {
     }
   };
 
-  const sendMessage = (event) => {
+  const sendMessage = async(event) => {
     setShowVoiceIcon(false);
     if (event.type === "submit" || (event.key === "Enter" && !event.shiftKey)) {
-      console.log("MSG : ", userInput);
+      // console.log("MSG : ", userInput);
       event.preventDefault();
       if (userInput.trim() === "") return;
       setShowLoader(true)
@@ -101,23 +102,32 @@ const Chatbot = ({displayChat,slideOut}) => {
       };
       setChatMessages((prevMessages) => [...prevMessages, newUserMessage]);
       setUserInput("");
-
-      if (botMessageTimeout) {
-        clearTimeout(botMessageTimeout);
-      }
-
-      const newBotMessageTimeout = setTimeout(() => {
-        const defaultBotMessage = {
+    
+     const userres= await DisplayChat.get(userInput);
+     setShowLoader(false);
+     const defaultBotMessage = {
           id: uuidv4(),
-          text: "Thanks for your messages!",
+          text: userres,
           sender: "bot",
         };
-        setChatMessages((prevMessages) => [...prevMessages, defaultBotMessage]);
-        setBotMessageTimeout(null); // Clear the timeout
-        setShowLoader(false);
-      }, 5000);
+     setChatMessages((prevMessages) => [...prevMessages, defaultBotMessage]);
 
-      setBotMessageTimeout(newBotMessageTimeout);
+      // if (botMessageTimeout) {
+      //   clearTimeout(botMessageTimeout);
+      // }
+
+      // const newBotMessageTimeout = setTimeout(() => {
+      //   const defaultBotMessage = {
+      //     id: uuidv4(),
+      //     text: "Thanks for your messages!",
+      //     sender: "bot",
+      //   };
+      //   setChatMessages((prevMessages) => [...prevMessages, defaultBotMessage]);
+      //   setBotMessageTimeout(null); // Clear the timeout
+      //   setShowLoader(false);
+      // }, 5000);
+
+      // setBotMessageTimeout(newBotMessageTimeout);
     }
   };
 

@@ -14,6 +14,18 @@ class playvideo {
       console.log(e);
     }
   }
+  async live()
+  {
+    console.log('hello')
+    try {
+      const response = await  fetch(`http://192.168.1.124:8000/live`)
+      console.log(response);
+ 
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
 }
 
 const VideoPlay = new playvideo();
