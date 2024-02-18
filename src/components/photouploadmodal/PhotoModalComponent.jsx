@@ -14,21 +14,24 @@ import {
 import "./PhotoModalComponent.scss";
 import { useState } from "react";
 import AddUser from "../../services/ChatService/UserChat";
+import CircleLoad from "../loader/CircleLoad";
+import LoadingButton from "../loadingbutton/LoadingButton";
 export default function ModalComponent() 
 {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [selectedFile, setSelectedFile] = useState();
   const [name, setName] = useState("");
-
+  const [load, setLoad] = useState(false);
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     setSelectedFile(file);
   };
   const formData = new FormData();
-  function submit() {
+  async function submit() {
     formData.append("name", name);
     formData.append("file", selectedFile);
-    AddUser.Add(formData);
+    const val= await AddUser.Add(formData);
+    setLoad(false)
   }
   return (
     <>
@@ -63,9 +66,15 @@ export default function ModalComponent()
                 <Button color="danger" variant="flat" onPress={onClose}>
                   Close
                 </Button>
-                <Button color="primary" onPress={submit}>
-                  Upload
-                </Button>
+                {!load ? (
+                  <Button color="primary" onPress={()=>{submit()
+                  setLoad(true)
+                  }}>
+                    Upload
+                  </Button>
+                ) : (
+                  <LoadingButton />
+                )}
               </ModalFooter>
             </>
           )}

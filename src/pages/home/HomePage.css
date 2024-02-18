@@ -92,6 +92,16 @@ a {
   flex-direction: column;
 
 }
+.red-play{
+  height: 60px;
+  width: 60px;
+margin-top: 7%;
+margin-left: 48%;
+}
+.load-wrapper{
+  margin-top: 20%;
+  margin-left: 48%;
+}
 
 .video-wrapper {
   height: 100%;
@@ -122,7 +132,7 @@ a {
   background-color: white;
   width: 97.5%;
   transition: width 0.3s ease;
-  border-radius: 16px 16px 0px 0px;
+  border-radius: 16px 16px 16px 16px;
   overflow: hidden;
   display: flex;
   flex-wrap: wrap;
@@ -535,11 +545,12 @@ a {
 } */
 
 .msg-bubble {
-  max-width: 450px;
+  max-width: 670px;
   padding: 5px;
   border-radius: 15px;
   font-size: 10px;
   display: flex;
+  justify-content: left;
 }
 
 .dot {
@@ -553,7 +564,7 @@ a {
 
 .logo-container img {
   height: 18px;
-  margin-right: 15px;
+  margin-right: 25px;
 
 }
 
@@ -568,7 +579,18 @@ a {
   font-weight: bolder;
 }
 
-
+.liveupdates{
+  margin: -10px 10px;
+  width: 140px;
+  height: 35px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: rgb(255,135,123);
+  cursor: pointer;
+}
 
 /* Comments */
 
@@ -684,3 +706,14 @@ a {
 /* .chatIcon {
   margin: 10px;
 } */
+.fullscreen-icon{
+  height: 5 px;
+  position: absolute;
+  bottom: 37%;
+margin-left: 5px;
+
+}
+.fullscreen-icon img{
+  height: 35px;
+  
+}

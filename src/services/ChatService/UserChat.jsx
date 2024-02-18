@@ -27,6 +27,7 @@ class UserChat {
       );
       console.log(response);
       console.log("bye");
+      return response
     } catch (e) {
       console.log(e);
     }

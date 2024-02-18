@@ -16,6 +16,7 @@ function App() {
           <Route path="/knownface" element={<Knownface />}></Route>
         </Routes>
       </BrowserRouter>
+
     </>
   );
 }

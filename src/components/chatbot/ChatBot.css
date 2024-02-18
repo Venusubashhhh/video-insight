@@ -3,13 +3,13 @@
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
   right: 15px;
-  height: 96vh;
+  height: 96.7vh;
   width: 25vw;
   min-width: 19rem;
   margin: 12px 0px;
   padding: 10;
   overflow: hidden;
-  border-radius:10px 10px 0px 0px;
+  border-radius: 16px;
   background-color: white;
   box-shadow: 0 2px 6px 0 rgba(136, 148, 171, 0.2), 0 24px 20px -24px rgba(71, 82, 107, 0.1);
   /* border: 1px solid rgb(100, 99, 99); */
@@ -36,7 +36,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  background-color: #3d42df;
+  background-color:rgb(255,135,123);
   cursor: pointer;
 }
 
@@ -67,7 +67,7 @@
 }
 
 .user-message {
-  background-color: #3D42DF;
+  background-color:rgb(255,135,123);
   text-align: left;
   color: white;
   display: flex;
@@ -85,8 +85,8 @@
 .input-container {
   display: flex;
   margin-top: 6px;
-  padding: 5px;
-  margin: 6px 10px 0px 10px;
+  padding: 10px;
+  margin: 10px 10px 15px 10px;
   height: 40px;
   align-items: center;
   background-color: #F3F4F9;

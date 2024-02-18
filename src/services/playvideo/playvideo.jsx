@@ -27,7 +27,7 @@ class playvideo {
   }
   async pause(){
     try {
-      const response = await axios.delete(`${apiBase}/pause`);
+      const response = await axios.get(`${apiBase}/pause`);
       return response.data;
     } catch (e) {
       console.log(e);
@@ -55,7 +55,18 @@ class playvideo {
       console.log(e);
     }
   }
-
+async getface()
+{
+  try{
+const response=await axios.get(`${apiBase}/getUsers`);
+return response;
+console.log(response);
+  }
+  catch(e)
+  {
+    console.log(e)
+  }
+}
 }
 
 const VideoPlay = new playvideo();

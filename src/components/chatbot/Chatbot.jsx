@@ -230,10 +230,7 @@ const Chatbot = ({displayChat,slideOut}) => {
           Live Chat
         </div>
         <div style={{marginRight:"10px",cursor:"pointer"}} onClick={()=> setChatMessages([])}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style={{ fill: 'grey', transform: '', msFilter: '' }}>
-              <path d="M7 10h10v4H7z"></path>
-               <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path>
-            </svg>
+           <img src="../../../public/assets/icons8-clear-24 (1).png"></img>
         </div>
       </div>
       <div className="messages" ref={markdownRef}>
@@ -263,7 +260,7 @@ const Chatbot = ({displayChat,slideOut}) => {
                 type="submit"
                 onClick={toggleListening}
                 className="sendIcon"
-                style={{backgroundColor:" #3D42DF"}}
+                style={{backgroundColor:"rgb(255,135,123)"}}
               >
                 <svg
                   viewBox="0 0 22 22"
@@ -283,7 +280,7 @@ const Chatbot = ({displayChat,slideOut}) => {
                 </svg>
               </button>
             ) : (
-              <button type="submit" className="sendIcon" style={{backgroundColor:" #3D42DF"}}>
+              <button type="submit" className="sendIcon" style={{backgroundColor:"rgb(255,135,123)"}}>
                 <svg
                   viewBox="0 0 24 24"
                   height="14"
